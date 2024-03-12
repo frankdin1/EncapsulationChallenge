@@ -4,8 +4,11 @@ public class Printer {
     private boolean duplex;
 
     public Printer(int tonerLevel, boolean duplex){
-        this.tonerLevel = tonerLevel;
+        if (tonerLevel < 0 || tonerLevel > 100)
+            this.tonerLevel = -1;
+        else this.tonerLevel = tonerLevel;
         this.duplex = duplex;
+        this.pagesPrinted = 0;
     }
 
     public int addToner(int tonerAmount){
